@@ -1,0 +1,40 @@
+pretrained_model_path: ".checkpoints/stable-diffusion-v1-4"
+output_dir: "./outputs/horse_run"
+
+train_data:
+  video_root: "./videos/horse_run"
+  # prompt: "a man is skiing"
+  n_sample_frames: 16
+  width: 512
+  height: 320
+  sample_start_idx: 0
+  sample_frame_rate: 1
+
+validation_data:
+  prompts:
+    - "a horse runs in the universe"
+    - "a horse runs on the Mars"
+  video_length: 16
+  width: 512
+  height: 320
+  num_inference_steps: 50
+  guidance_scale: 12.5
+  use_inv_latent: False
+  num_inv_steps: 50
+
+learning_rate: 3e-5
+train_batch_size: 1
+max_train_steps: 30000
+checkpointing_steps: 5000
+validation_steps: 50
+trainable_modules:
+  - "conv1d"
+  - "attn1.to_q"
+  - "conv_gate"
+  - "attn_temp"
+
+seed: 33
+mixed_precision: fp16
+use_8bit_adam: False
+gradient_checkpointing: True
+enable_xformers_memory_efficient_attention: True
