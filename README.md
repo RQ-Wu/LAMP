@@ -180,7 +180,7 @@ If you find our repo useful for your research, please cite us:
 @artical{wu2023lamp,
     title={LAMP: Learn a Motion Pattern by Few-Shot Tuning a Text-to-Image Diffusion Model},
     author={Wu, Ruiqi and Chen, Liangyu and Yang, Tong and Guo, Chunle and Li, Chongyi and Zhang, Xiangyu},
-    journal={arXiv preprint arXiv:2303.13439},
+    journal={arXiv preprint arXiv:XXXX},
     year={2023}
 }
 ```
