@@ -1,4 +1,7 @@
-# <p align=center> :movie_camera: `LAMP: Learn A Motion Pattern by Few-Shot Tuning a Text-to-Image Diffusion Model`</p>
+<img class="center" src="assets/LOGO.png" style="width:30%">
+
+# LAMP: Learn A Motion Pattern by Few-Shot Tuning a Text-to-Image Diffusion Model
+
 
 ![Python 3.8](https://img.shields.io/badge/python-3.8-g) ![pytorch 1.12.0](https://img.shields.io/badge/pytorch-1.12.1-blue.svg)
 
