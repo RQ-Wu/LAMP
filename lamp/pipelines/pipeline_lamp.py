@@ -369,11 +369,6 @@ class LAMPPipeline(DiffusionPipeline):
         text_embeddings = self._encode_prompt(
             prompt, device, num_videos_per_prompt, do_classifier_free_guidance, negative_prompt
         )
-        # image = cv2.imread(prompt.replace(' ', '_') + '.png')
-        # image = cv2.resize(image, (512, 512))[:, :, ::-1]
-        # first_frame_latents = torch.Tensor(image.copy()).to(text_embeddings.device).type_as(text_embeddings).permute(2, 0, 1).repeat(1, 1, 1, 1)
-        # first_frame_latents = first_frame_latents / 127.5 - 1.0
-        # first_frame_latents = self.vae.encode(first_frame_latents).latent_dist.sample() * 0.18215
 
         # Prepare timesteps
         self.scheduler.set_timesteps(num_inference_steps, device=device)
@@ -423,13 +418,9 @@ class LAMPPipeline(DiffusionPipeline):
             for i, t in enumerate(timesteps):
                 # expand the latents if we are doing classifier free guidance
                 latent_model_input = torch.cat([latents] * 2) if do_classifier_free_guidance else latents
-                # print(latent_model_input.shape, first_frame_latents.shape)
-                # latent_model_input = torch.cat((latent_model_input, first_frame_latents), dim=1)
                 latent_model_input = self.scheduler.scale_model_input(latent_model_input, t)
 
                 # predict the noise residual
-                # import ipdb
-                # ipdb.set_trace()
                 noise_pred = self.unet(latent_model_input, t, encoder_hidden_states=text_embeddings)
                 noise_pred = noise_pred.sample.to(dtype=latents_dtype)
 
@@ -439,9 +430,7 @@ class LAMPPipeline(DiffusionPipeline):
                     noise_pred = noise_pred_uncond + guidance_scale * (noise_pred_text - noise_pred_uncond)
 
                 # compute the previous noisy sample x_t -> x_t-1
-                # latents = self.scheduler.step(noise_pred, t, latents, **extra_step_kwargs).prev_sample
                 latents[:, :, 1:, :, :] = self.scheduler.step(noise_pred[:, :, 1:, :, :], t, latents[:, :, 1:, :, :], **extra_step_kwargs).prev_sample
-                # latents = self.scheduler.step(noise_pred, t, latents, **extra_step_kwargs).prev_sample
                 
                 for f in range(1, video_length):
                     old_latents = latents.clone()
@@ -460,10 +449,7 @@ class LAMPPipeline(DiffusionPipeline):
         # # Post-processing
         old_latents = latents.clone()
         for f in range(1, video_length):
-            # latents[:, :, f, :, :] = latents[:, :, f, :, :] / latents[:, :, f, :, :].mean() * latents[:, :, 0, :, :].mean()
             latents[:, :, f, :, :] = adaptive_instance_normalization(latents[:, :, f, :, :], old_latents[:, :, 0, :, :])
-            # latents[:, :, f, :, :] = nearest_matching(latents[:, :, f-1, :, :], latents[:, :, f, :, :], latents[:, :, f-1, :, :])
-            # latents[:, :, f, :, :] = nearest_matching(latents[:, :, f, :, :], latents[:, :, f-1, :, :])
         video = self.decode_latents(latents)
         # Convert to tensor
         if output_type == "tensor":
@@ -472,4 +458,4 @@ class LAMPPipeline(DiffusionPipeline):
         if not return_dict:
             return video
 
-        return TuneAVideoPipelineOutput(videos=video)
+        return LAMPPipelineOutput(videos=video)
