@@ -1,4 +1,6 @@
-<img class="center" src="assets/LOGO.png" style="width:30%">
+<p align="center">
+  <img src="assets/LOGO.png" height=170>
+</p>
 
 # LAMP: Learn A Motion Pattern by Few-Shot Tuning a Text-to-Image Diffusion Model
 
