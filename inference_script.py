@@ -72,6 +72,7 @@ def main():
         prompt = img_path.split('/')[-1][:-4].replace('_', ' ')
     else:
         prompt = args.prompt
+    print(prompt)
     image = cv2.imread(img_path)
     image = cv2.resize(image, (512, 320))[:, :, ::-1]
     first_frame_latents = torch.Tensor(image.copy()).to('cuda').type(torch.float16).permute(2, 0, 1).repeat(1, 1, 1, 1)

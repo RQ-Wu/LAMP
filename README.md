@@ -43,14 +43,27 @@ In our work, we use [Stable Diffusion v1.4](https://huggingface.co/CompVis/stabl
 2. Our checkpoint and training data will be released soon, you can also collected video data by your own (Suggest websites: [pexels](https://pexels.com/), [forzen-in-time](https://meru.robots.ox.ac.uk/frozen-in-time/)) and put .mp4 files in `./videos/[motion_name]/`
 
 ## Get Started
-1. Training to learn a motion pattern
+### 1. Training to learn a motion pattern
 ```bash
 CUDA_VISIBLE_DEVICES=X accelerate launch train_lamp.py config="configs/XXX.yaml"
 ```
 
-2. Inference
+### 2. Inference
+Here is an example command for inference
 ```bash
-TBD
+python inference_script.py \
+    --weight ./my_weight/turn_to_smile/unet \
+    --pretrain_weight ./checkpoints/stable-diffusion-v1-4 \
+    --first_frame_path ./benchmark/head_photo_of_a_cute_girl,_comic_style.png \
+    --prompt "head photo of a cute girl, comic style, turns to smile" \
+    # default prompt is same to the image's filename
+    # [Other optional configs...]
+    # --output results/ \ 
+    # --height 320 \ 
+    #--width 512 \
+    #--length 16 \
+    #--cfg 12.5 \
+
 ```
 
 
