@@ -2,7 +2,7 @@
   <img src="assets/LOGO.png" height=170>
 </p>
 
-# LAMP: Learn A Motion Pattern by Few-Shot Tuning a Text-to-Image Diffusion Model
+# <p align="center"> LAMP: Learn A Motion Pattern by Few-Shot Tuning a Text-to-Image Diffusion Model </p>
 
 
 ![Python 3.8](https://img.shields.io/badge/python-3.8-g) ![pytorch 1.12.0](https://img.shields.io/badge/pytorch-1.12.1-blue.svg)
