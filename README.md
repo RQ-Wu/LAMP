@@ -15,7 +15,7 @@ This repository is the official implementation of [LAMP]()
 
 [[Arxiv Paper](https://github.com/RQ-Wu/LAMP/blob/master/Arxiv_LAMP.pdf)]&nbsp;
 [[Website Page](https://rq-wu.github.io/projects/LAMP/index.html)]&nbsp;
-[Google Driver (TBD)] [Baidu Disk (TBD  )]&nbsp;
+[Google Driver (TBD)] [Baidu Disk (TBD)]&nbsp;
 ![method](assets/method.png)&nbsp;
 
 :rocket: LAMP is a **few-shot-based** method for text-to-video generation. You only need **8~16 videos 1 GPU (> 15 GB VRAM)** for training!! Then you can generate videos with learned motion pattern.
