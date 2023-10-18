@@ -13,13 +13,16 @@ This repository is the official implementation of [LAMP]()
 > Ruiqi Wu, Linagyu Chen, Tong Yang, Chunle Guo, Chongyi Li, Xiangyu Zhang 
 ><br>( * indicates corresponding author)
 
-[[Arxiv Paper](https://github.com/RQ-Wu/LAMP/blob/master/Arxiv_LAMP.pdf)]&nbsp;
+[[Arxiv Paper](https://arxiv.org/abs/2310.10769)]&nbsp;
 [[Website Page](https://rq-wu.github.io/projects/LAMP/index.html)]&nbsp;
 [Google Driver (TBD)] [Baidu Disk (TBD)]&nbsp;
 ![method](assets/method.png)&nbsp;
 
 :rocket: LAMP is a **few-shot-based** method for text-to-video generation. You only need **8~16 videos 1 GPU (> 15 GB VRAM)** for training!! Then you can generate videos with learned motion pattern.
 
+## News
+- [2023/10/17] We realse our checkpoints and [Arxiv paper](https://arxiv.org/abs/2310.10769)
+- [2023/10/16] Our code is publicly available.
 ## Preparation
 ### Dependencies and Installation
 - Ubuntu > 18.04
@@ -45,7 +48,60 @@ pip install xformers==0.0.13
 1. You can download pre-trained T2I diffusion models on hugging face.
 In our work, we use [Stable Diffusion v1.4](https://huggingface.co/CompVis/stable-diffusion-v1-4) as our backbone network. Clone the pretrained weights by `git-lfs` and put them in `./checkpoints`
 
-2. Our checkpoint and training data will be released soon, you can also collected video data by your own (Suggest websites: [pexels](https://pexels.com/), [forzen-in-time](https://meru.robots.ox.ac.uk/frozen-in-time/)) and put .mp4 files in `./videos/[motion_name]/`
+2. Our checkpoint and training data are listed as followed, you can also collected video data by your own (Suggest websites: [pexels](https://pexels.com/), [forzen-in-time](https://meru.robots.ox.ac.uk/frozen-in-time/)) and put .mp4 files in `./training_videos/[motion_name]/`
+
+<table class="center">
+<tr>
+    <td align="center"> Motion Name </td>
+    <td align="center"> Checkpoint Link </td>
+    <td align="center"> Training data </td>
+</tr>
+<tr>
+    <td align="center">Birds fly</td>
+    <td align="center"><a href="https://pan.baidu.com/s/1nuZVRj-xRqkHySQQ3jCFkw">Baidu Disk (pwd: jj0o)</a></td>
+    <td align="center"><a href="https://pan.baidu.com/s/10fi8KoBrGJMpLQKhUIaFSQ">Baidu Disk (pwd: w96b)</a></td>
+</tr>
+<tr>
+    <td align="center">Firework</td>
+    <td align="center"><a href="https://pan.baidu.com/s/1zJnn5bZpGzChRHJdO9x6WA">Baidu Disk (pwd: wj1p)</a></td>
+    <td align="center"><a href="https://pan.baidu.com/s/1uIyw0Q70svWNM5z7DFYkiQ">Baidu Disk (pwd: oamp)</a></td>
+</tr>
+<tr>
+    <td align="center">Helicopter</td>
+    <td align="center"><a href="https://pan.baidu.com/s/1oj6t_VFo9cX0vTZWDq8q3w">Baidu Disk (pwd: egpe)</a></td>
+    <td align="center"><a href="https://pan.baidu.com/s/1MYMjIFyFTiLGEX1w0ees2Q">Baidu Disk (pwd: t4ba)</a></td>
+</tr>
+<tr>
+    <td align="center">Horse run</td>
+    <td align="center"><a href="https://pan.baidu.com/s/1lkAFZuEnot4JGruLe6pR3g">Baidu Disk (pwd: 19ld)</a></td>
+    <td align="center"><a href="https://pan.baidu.com/s/1z7FHN-aotdOF2MPUk4lDJg">Baidu Disk (pwd: mte7)</a></td>
+</tr>
+<tr>
+    <td align="center">Play the guitar</td>
+    <td align="center"><a href="https://pan.baidu.com/s/1uY47E08_cUofmlmKWfi46A">Baidu Disk (pwd: l4dw)</a></td>
+    <td align="center"><a href="https://pan.baidu.com/s/1cemrtzJtS_Lm8y8nZM9kSw">Baidu Disk (pwd: js26)</a></td>
+</tr>
+<tr>
+    <td align="center">Rain</td>
+    <td align="center"><a href="https://pan.baidu.com/s/1Cvsyg7Ld2O0DEK_U__2aXg">Baidu Disk (pwd: jomu)</a></td>
+    <td align="center"><a href="https://pan.baidu.com/s/1hMGrHCLNRDLJQ-4XKk6hZg">Baidu Disk (pwd: 31ug)</a></td>
+</tr>
+<tr>
+    <td align="center">Turn to smile</td>
+    <td align="center"><a href="https://pan.baidu.com/s/1UYjWncrxYiAhwpNAafH5WA">Baidu Disk (pwd: 2bkl)</a></td>
+    <td align="center"><a href="https://pan.baidu.com/s/1ErFSm6t-CtYBzsuzxi08dg">Baidu Disk (pwd: w96b)</a></td>
+</tr>
+<tr>
+    <td align="center">Waterfall</td>
+    <td align="center"><a href="https://pan.baidu.com/s/1tWArxOw6CMceaW_49rIoSA">Baidu Disk (pwd: vpkk)</a></td>
+    <td align="center"><a href="https://pan.baidu.com/s/1WkfVrs1ZX5eqrOCIkZBJZg">Baidu Disk (pwd: 2edp)</a></td>
+</tr>
+<tr>
+    <td align="center">All</td>
+    <td align="center"><a href="https://pan.baidu.com/s/1vRG7kMCTC7b9YUd4qsSP_A">Baidu Disk (pwd: ifsm)</a></td>
+    <td align="center"><a href="https://pan.baidu.com/s/1h5HrIGWP5OlMqp9gkD9cyQ">Baidu Disk (pwd: 2i2k)</a></td>
+</tr>
+</table>
 
 ## Get Started
 ### 1. Training to learn a motion pattern
