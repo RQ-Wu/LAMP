@@ -89,12 +89,12 @@ In our work, we use [Stable Diffusion v1.4](https://huggingface.co/CompVis/stabl
 <tr>
     <td align="center">Turn to smile</td>
     <td align="center"><a href="https://pan.baidu.com/s/1UYjWncrxYiAhwpNAafH5WA">Baidu Disk (pwd: 2bkl)</a></td>
-    <td align="center"><a href="https://pan.baidu.com/s/1ErFSm6t-CtYBzsuzxi08dg">Baidu Disk (pwd: w96b)</a></td>
+    <td align="center"><a href="https://pan.baidu.com/s/1ErFSm6t-CtYBzsuzxi08dg">Baidu Disk (pwd: l984)</a></td>
 </tr>
 <tr>
     <td align="center">Waterfall</td>
     <td align="center"><a href="https://pan.baidu.com/s/1tWArxOw6CMceaW_49rIoSA">Baidu Disk (pwd: vpkk)</a></td>
-    <td align="center"><a href="https://pan.baidu.com/s/1WkfVrs1ZX5eqrOCIkZBJZg">Baidu Disk (pwd: 2edp)</a></td>
+    <td align="center"><a href="https://pan.baidu.com/s/1hjlqRwa35nZ2pc2D-gIX9A">Baidu Disk (pwd: 2edp)</a></td>
 </tr>
 <tr>
     <td align="center">All</td>
