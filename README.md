@@ -185,7 +185,7 @@ python inference_script.py \
         <td align="center" style="width: 7%"> </td>
         <td align="center">GTA5 poster, a man plays the guitar.</td>
         <td align="center">A woman plays the guitar.</td>
-        <td align="center">An astronaut plays the guitar, photorelastic.</td>
+        <td align="center">An astronaut plays the guitar, photorealistic.</td>
     </tr>
     <tr>
         <td align="center" style="width: 7%"> Birds fly</td>
