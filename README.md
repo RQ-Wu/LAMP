@@ -23,6 +23,7 @@ This repository is the official implementation of [LAMP]()
 :rocket: LAMP is a **few-shot-based** method for text-to-video generation. You only need **8~16 videos 1 GPU (> 15 GB VRAM)** for training!! Then you can generate videos with learned motion pattern.
 
 ## News
+- [2023/11/02] The [Colab demo](https://colab.research.google.com/drive/1Cw2e0VFktVjWC5zIKzv2r7D2-4NtH8xm?usp=sharing) is released! Thanks for the PR of @ShashwatNigam99.
 - [2023/10/21] We add Google Drive link about our checkpoints and training data.
 - [2023/10/17] We release our checkpoints and [Arxiv paper](https://arxiv.org/abs/2310.10769).
 - [2023/10/16] Our code is publicly available.
