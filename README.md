@@ -49,10 +49,10 @@ pip install xformers==0.0.13
 ```
 
 ### Weights and Data
-1. You can download pre-trained T2I diffusion models on hugging face.
+1. You can download pre-trained T2I diffusion models on Hugging Face.
 In our work, we use [Stable Diffusion v1.4](https://huggingface.co/CompVis/stable-diffusion-v1-4) as our backbone network. Clone the pretrained weights by `git-lfs` and put them in `./checkpoints`
 
-2. Our checkpoint and training data are listed as followed, you can also collected video data by your own (Suggest websites: [pexels](https://pexels.com/), [forzen-in-time](https://meru.robots.ox.ac.uk/frozen-in-time/)) and put .mp4 files in `./training_videos/[motion_name]/`
+2. Our checkpoint and training data are listed as followed, you can also collected video data by your own (Suggest websites: [pexels](https://pexels.com/), [frozen-in-time](https://meru.robots.ox.ac.uk/frozen-in-time/)) and put .mp4 files in `./training_videos/[motion_name]/`
 
 <table class="center">
 <tr>
