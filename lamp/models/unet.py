@@ -229,7 +229,7 @@ class UNet3DConditionModel(ModelMixin, ConfigMixin):
         Args:
             slice_size (`str` or `int` or `list(int)`, *optional*, defaults to `"auto"`):
                 When `"auto"`, halves the input to the attention heads, so attention will be computed in two steps. If
-                `"max"`, maxium amount of memory will be saved by running only one slice at a time. If a number is
+                `"max"`, maximum amount of memory will be saved by running only one slice at a time. If a number is
                 provided, uses as many slices as `attention_head_dim // slice_size`. In this case, `attention_head_dim`
                 must be a multiple of `slice_size`.
         """
@@ -311,7 +311,7 @@ class UNet3DConditionModel(ModelMixin, ConfigMixin):
             returning a tuple, the first element is the sample tensor.
         """
         # By default samples have to be AT least a multiple of the overall upsampling factor.
-        # The overall upsampling factor is equal to 2 ** (# num of upsampling layears).
+        # The overall upsampling factor is equal to 2 ** (# num of upsampling layers).
         # However, the upsampling interpolation output size can be forced to fit any upsampling size
         # on the fly if necessary.
         default_overall_up_factor = 2**self.num_upsamplers
