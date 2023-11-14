@@ -1,32 +1,32 @@
-pretrained_model_path: ".checkpoints/stable-diffusion-v1-4"
-output_dir: "./outputs/horse_run"
+pretrained_model_path: "./checkpoints/stable-diffusion-v1-4"
+output_dir: "./outputs/run"
 
 train_data:
-  video_root: "./videos/horse_run"
+  video_root: "./training_videos/editing/run.mp4"
   # prompt: "a man is skiing"
-  n_sample_frames: 16
+  n_sample_frames: 24
   width: 512
   height: 320
   sample_start_idx: 0
-  sample_frame_rate: 1
+  sample_frame_rate: 2
 
 validation_data:
-  image_path: "benchmark/horse_run"
+  image_path: "benchmark/editing"
   prompts:
-    - "a horse runs in the universe"
-    - "a horse runs on the Mars"
-  video_length: 16
+    - "a long hair man runs on the road"
+    - "a girl runs beside a river, Van Gogh style"
+  video_length: 24
   width: 512
   height: 320
   num_inference_steps: 50
   guidance_scale: 12.5
-  use_inv_latent: False
+  use_inv_latent: True
   num_inv_steps: 50
 
 learning_rate: 3e-5
 train_batch_size: 1
-max_train_steps: 30000
-checkpointing_steps: 5000
+max_train_steps: 500
+checkpointing_steps: 50
 validation_steps: 50
 trainable_modules:
   - "conv1d"

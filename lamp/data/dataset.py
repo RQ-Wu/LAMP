@@ -2,8 +2,6 @@ import decord
 decord.bridge.set_bridge('torch')
 import os
 import cv2
-import pandas as pd
-import av
 import numpy as np
 
 from torch.utils.data import Dataset
@@ -25,9 +23,14 @@ class LAMPDataset(Dataset):
         self.video_root = video_root
         self.video_path = []
         self.prompt = []
-        for video_name in os.listdir(video_root):
-            self.video_path.append(os.path.join(self.video_root, video_name))
-            self.prompt.append(video_root.split('/')[-1].replace('_', ' '))
+        if os.path.isdir(video_root):
+            for video_name in os.listdir(video_root):
+                self.video_path.append(os.path.join(self.video_root, video_name))
+                self.prompt.append(video_root.split('/')[-1].replace('_', ' '))
+        else:
+            self.video_path.append(video_root)
+            self.prompt.append(video_root.split('/')[-1].replace('_', ' ').replace('.mp4', ''))
+
         self.prompt_ids = []
 
         self.width = width

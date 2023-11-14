@@ -348,6 +348,7 @@ class LAMPPipeline(DiffusionPipeline):
         return_dict: bool = True,
         callback: Optional[Callable[[int, int, torch.FloatTensor], None]] = None,
         callback_steps: Optional[int] = 1,
+        ddim_inv_latent = None,
         **kwargs,
     ):
         # Default height and width to unet
@@ -376,17 +377,30 @@ class LAMPPipeline(DiffusionPipeline):
 
         # Prepare latent variables
         num_channels_latents = self.unet.in_channels
-        noise_latents = self.prepare_latents(
-            batch_size * num_videos_per_prompt,
-            num_channels_latents,
-            video_length,
-            height,
-            width,
-            text_embeddings.dtype,
-            device,
-            generator,
-            None,
-        )
+        if ddim_inv_latent is not None:
+            noise_latents = self.prepare_latents(
+                batch_size * num_videos_per_prompt,
+                num_channels_latents,
+                video_length,
+                height,
+                width,
+                text_embeddings.dtype,
+                device,
+                generator,
+                ddim_inv_latent,
+            )
+        else:
+            noise_latents = self.prepare_latents(
+                batch_size * num_videos_per_prompt,
+                num_channels_latents,
+                video_length,
+                height,
+                width,
+                text_embeddings.dtype,
+                device,
+                generator,
+                None,
+            )
         first_frame_latents = self.prepare_latents(
             batch_size * num_videos_per_prompt,
             num_channels_latents,
@@ -398,9 +412,10 @@ class LAMPPipeline(DiffusionPipeline):
             generator,
             latents[:, :, -1:, :, :],
         )
-        for f in range(1, video_length):
-            base_ratio = 0.2
-            noise_latents[:, :, f:f+1, :, :] = (base_ratio) * noise_latents[:, :, 0:1, :, :] + (1-base_ratio) * noise_latents[:, :, f:f+1, :, :]
+        if ddim_inv_latent is None:
+            for f in range(1, video_length):
+                base_ratio = 0.2
+                noise_latents[:, :, f:f+1, :, :] = (base_ratio) * noise_latents[:, :, 0:1, :, :] + (1-base_ratio) * noise_latents[:, :, f:f+1, :, :]
 
         noise_latents[:, :, 0:1, :, :] = first_frame_latents
         latents = noise_latents

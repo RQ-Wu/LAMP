@@ -47,6 +47,7 @@ def main():
     parser.add_argument('-ws', '--width', type=int, default=512, help='video width')
     parser.add_argument('-l', '--length', type=int, default=16, help='video length')
     parser.add_argument('--cfg', type=float, default=12.5, help='classifier-free guidance scale')
+    parser.add_argument('--editing', action="store_true", help='video editing')
     args = parser.parse_args()
 
     # load weights
@@ -55,6 +56,11 @@ def main():
     unet = UNet3DConditionModel.from_pretrained('/'.join(my_model_path.split('/')[:-1]), subfolder=my_model_path.split('/')[-1], torch_dtype=torch.float16).to('cuda')
     tokenizer = CLIPTokenizer.from_pretrained(pretrained_model_path, subfolder="tokenizer", torch_dtype=torch.float16)
     text_encoder = CLIPTextModel.from_pretrained(pretrained_model_path, subfolder="text_encoder", torch_dtype=torch.float16).to('cuda')
+    print(args.editing)
+    if args.editing:
+        ddim_inv_latent = torch.load(f"{'/'.join(my_model_path.split('/')[:-1])}/inv_latents/ddim_latent-500.pt").to(torch.float16)
+    else:
+        ddim_inv_latent = None
 
     # build pipeline
     unet.enable_xformers_memory_efficient_attention()
@@ -81,7 +87,7 @@ def main():
     first_frame_latents = first_frame_latents.repeat(1, 1, 1, 1, 1).permute(1, 2, 0, 3, 4)
 
     # video generation
-    video = pipe(prompt, generator=generator, latents=first_frame_latents, video_length=args.length, height=args.height, width=args.width, num_inference_steps=50, guidance_scale=args.cfg, use_inv_latent=False, num_inv_steps=50).videos
+    video = pipe(prompt, generator=generator, latents=first_frame_latents, video_length=args.length, height=args.height, width=args.width, num_inference_steps=50, guidance_scale=args.cfg, use_inv_latent=False, num_inv_steps=50, ddim_inv_latent=ddim_inv_latent).videos
     for f in range(1, video.shape[2]):
         former_frame = video[0, :, 0, :, :].permute(1, 2, 0).cpu().numpy()
         frame = video[0, :, f, :, :].permute(1, 2, 0).cpu().numpy()
