@@ -267,7 +267,7 @@ python inference_script.py --weight ./outputs/run/unet --pretrain_weight ./check
 If you find our repo useful for your research, please cite us:
 ```
 @inproceedings{wu2024lamp,
-      title={AMP: Learn A Motion Pattern for Few-Shot Video Generation},
+      title={LAMP: Learn A Motion Pattern for Few-Shot Video Generation},
       author={Wu, Ruiqi and Chen, Liangyu and Yang, Tong and Guo, Chunle and Li, Chongyi and Zhang, Xiangyu},
       booktitle={IEEE Conference on Computer Vision and Pattern Recognition (CVPR)},
       year={2024}
